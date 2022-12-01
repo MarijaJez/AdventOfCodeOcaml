@@ -10,6 +10,14 @@ module Solver : Solver = struct
 
   let naloga1 data =
     let lines = List.lines data in
+    let rec aux = function
+      | [] -> Printf.printf "]\n"
+      | x :: xs ->
+          Printf.printf "{%7s}, " x;
+          aux xs
+    in
+    let () = aux lines in
+    Printf.printf "%d\n" (List.length lines);
     lines |> List.int_list
     |> List.fold_left (fun s x -> s + cost_fun x) 0
     |> string_of_int

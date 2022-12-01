@@ -8,8 +8,7 @@ module List = struct
     sum' 0 l
 
   let multiply l = List.fold_left ( * ) 1 l
-
-  let lines = String.split_on_char '\n'
+  let lines input = String.trim input |> String.split_on_char '\n'
 
   let split_white l =
     String.split_on_char ' ' l |> List.map String.trim
@@ -31,11 +30,8 @@ module List = struct
     group_list' [] [] l
 
   let with_index l = List.mapi (fun i x -> (i, x)) l
-
   let count a l = l |> List.filter (fun x -> x = a) |> List.length
-
   let list_of_string s = s |> String.to_seq |> List.of_seq
-
   let count_filter f l = l |> List.filter f |> List.length
 
   let count_filter2 f l =

@@ -23,7 +23,6 @@ end
 
 module type Solver = sig
   val naloga1 : string -> string
-
   val naloga2 : string -> string -> string
 end
 
@@ -48,7 +47,6 @@ end
 (* Tukaj re-definirajte funkcijo naloga1 in naloga2 *)
 module Solver1 : Solver = struct
   let naloga1 data = ""
-
   let naloga2 data _part1 = ""
 end
 

@@ -1,5 +1,4 @@
 let naloga1 vsebina_datoteke = "10"
-
 let naloga2 vsebina_datoteke = string_of_int (String.length vsebina_datoteke)
 
 let _ =
