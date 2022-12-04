@@ -110,21 +110,22 @@ module Solver : Solver = struct
 
   let poisci_skupni_element_3 (tri_stringi : string * string * string) =
     let str1, str2, str3 = tri_stringi in
-    let list1, list2, list3 = ruzak_str_to_list str1, ruzak_str_to_list str2, ruzak_str_to_list str3 in
+    let list1, list2, list3 =
+      (ruzak_str_to_list str1, ruzak_str_to_list str2, ruzak_str_to_list str3)
+    in
     let rec pomozna list1 list2 list3 =
       match list1 with
       | [] -> None
-      | x :: xs -> if (List.mem x list2 && List.mem x list3) then Some x else pomozna xs list2 list3
+      | x :: xs ->
+          if List.mem x list2 && List.mem x list3 then Some x
+          else pomozna xs list2 list3
     in
     match pomozna list1 list2 list3 with
     | None -> raise (Invalid_argument "string_option is None")
     | Some x -> x
 
-  let naloga2 (data : string) (_ : string) = 
-    data
-    |> String.split_on_char '\n' 
-    |> list_to_list_trojic
+  let naloga2 (data : string) (_ : string) =
+    data |> String.split_on_char '\n' |> list_to_list_trojic
     |> List.map poisci_skupni_element_3
     |> List.map vrednost_elementa |> vsota |> string_of_int
-
 end
