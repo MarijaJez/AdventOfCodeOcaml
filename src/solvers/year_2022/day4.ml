@@ -35,12 +35,13 @@ module Solver : Solver = struct
     let par1, par2 = par_parov in
     let a, b = par1 in
     let c, d = par2 in
-    if (a >= c && a <= d) || (a <= c && c <= b) || je_vsebovan par_parov then true else false
+    if (a >= c && a <= d) || (a <= c && c <= b) || je_vsebovan par_parov then
+      true
+    else false
+
   (* join two strings *)
   let naloga2 (data : string) (_ : string) =
-    data 
-    |> String.split_on_char '\n' 
-    |> List.map String.trim
+    data |> String.split_on_char '\n' |> List.map String.trim
     |> List.map input_v_sez_sez
     |> List.map sez_sez_v_par_parov
     |> List.map se_prekriva |> prestej |> string_of_int
